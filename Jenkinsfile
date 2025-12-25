@@ -22,7 +22,7 @@ pipeline {
 
                 scp /var/jenkins_home/workspace/HelloWeb/target/com.springmvc3.helloworld-0.0.1.war root@tomcat9:/usr/local/tomcat/webapps/ROOT.war
 
-                ssh -o StrictHostKeyChecking=no root@tomcat9 "export JAVA_HOME=/usr/local/openjdk-8/bin/java && export JRE_HOME=/usr/local/openjdk-8/bin/java && /usr/local/tomcat/bin/startup.sh start"
+                ssh -o StrictHostKeyChecking=no root@tomcat9 "export JAVA_HOME=/usr/local/openjdk-8/bin/java && export JRE_HOME=/usr/local/openjdk-8/bin/java && /usr/local/tomcat/bin/startup.sh"
                 '''
             }
         }
