@@ -16,13 +16,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                ssh root@debian "systemctl stop tomcat9"
+                ssh root@tomcat9 "/usr/local/tomcat/bin/shutdown.sh"
 
-                ssh root@debian "rm -rf /opt/tomcat9/webapps/com.springmvc3.helloworld*"
+                ssh root@tomcat9 "rm -rf /usr/local/tomcat/webapps/com.springmvc3.helloworld*"
 
-                scp target/com.springmvc3.helloworld.war root@debian:/opt/tomcat9/webapps/
+                scp target/com.springmvc3.helloworld.war root@tomcat9:/usr/local/tomcat/webapps/
 
-                ssh root@debian "systemctl start tomcat9"
+                ssh root@tomcat9 "/usr/local/tomcat/bin/startup.sh"
                 '''
             }
         }
