@@ -16,13 +16,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                ssh root@tomcat9 "/usr/local/tomcat/bin/shutdown.sh"
+				ssh root@tomcat9 "export JAVA_HOME=/opt/java/openjdk && export JRE_HOME=/opt/java/openjdk && /usr/local/tomcat/bin/shutdown.sh"
 
                 ssh root@tomcat9 "rm -rf /usr/local/tomcat/webapps/com.springmvc3.helloworld*"
 
                 scp target/com.springmvc3.helloworld.war root@tomcat9:/usr/local/tomcat/webapps/
 
-                ssh root@tomcat9 "/usr/local/tomcat/bin/startup.sh"
+                ssh root@tomcat9 "export JAVA_HOME=/opt/java/openjdk && export JRE_HOME=/opt/java/openjdk && /usr/local/tomcat/bin/startup.sh"
                 '''
             }
         }
