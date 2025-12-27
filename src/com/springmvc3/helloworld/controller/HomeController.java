@@ -12,7 +12,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
-		model.addAttribute("title", "Spring 3.0 MVC Hello World");
+		model.addAttribute("title", "Spring 3.0 MVC Hello World!");
 		return "hello";
 	}
 	
